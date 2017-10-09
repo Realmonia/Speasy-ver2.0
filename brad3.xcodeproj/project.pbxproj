@@ -14,10 +14,7 @@
 		1A38F3811F854BED00E05659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A38F3801F854BED00E05659 /* Assets.xcassets */; };
 		1A38F3841F854BED00E05659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A38F3821F854BED00E05659 /* LaunchScreen.storyboard */; };
 		1A38F38C1F854D9E00E05659 /* predictiveText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38F38B1F854D9E00E05659 /* predictiveText.swift */; };
-<<<<<<< HEAD
-=======
 		3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */; };
->>>>>>> sceneSelectionUI
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +27,7 @@
 		1A38F3831F854BED00E05659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A38F3851F854BED00E05659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A38F38B1F854D9E00E05659 /* predictiveText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = predictiveText.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
->>>>>>> sceneSelectionUI
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +63,7 @@
 				1A38F3761F854BED00E05659 /* AppDelegate.swift */,
 				1A38F3781F854BED00E05659 /* ViewController.swift */,
 				1A38F37A1F854BED00E05659 /* Main.storyboard */,
-<<<<<<< HEAD
-=======
 				3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */,
->>>>>>> sceneSelectionUI
 				1A38F38B1F854D9E00E05659 /* predictiveText.swift */,
 				1A38F3801F854BED00E05659 /* Assets.xcassets */,
 				1A38F3821F854BED00E05659 /* LaunchScreen.storyboard */,
@@ -154,10 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-=======
 				3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */,
->>>>>>> sceneSelectionUI
 				1A38F3791F854BED00E05659 /* ViewController.swift in Sources */,
 				1A38F37F1F854BED00E05659 /* brad3.xcdatamodeld in Sources */,
 				1A38F3771F854BED00E05659 /* AppDelegate.swift in Sources */,
