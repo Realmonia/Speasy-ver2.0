@@ -11,8 +11,7 @@ import UIKit
 class SceneViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var currentSentence: UITextView!
-    
+    @IBOutlet weak var predictedSentence: UITextView!
     
     @IBAction func backButton(_ sender: Any) {
     performSegue(withIdentifier: "backConnector", sender: self)
@@ -20,12 +19,11 @@ class SceneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentSentence.isUserInteractionEnabled = false
         label.text = scene
+        predictedSentence.isUserInteractionEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
     }
 
     override func didReceiveMemoryWarning() {

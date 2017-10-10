@@ -1,1 +1,2 @@
-# Speasy-ver2.0
+# Speasy
+EECS 498 Project
