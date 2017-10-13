@@ -1,0 +1,15 @@
+Citation:
+
+https://stackoverflow.com/questions/28938660/how-to-lock-orientation-of-one-view-controller-to-portrait-mode-only-in-swift
+
+https://stackoverflow.com/questions/25606442/how-to-lock-portrait-orientation-for-only-main-view-using-swift
+
+https://stackoverflow.com/questions/7185440/how-to-change-the-font-size-in-uipickerview
+
+https://stackoverflow.com/questions/38958056/how-do-i-change-the-text-font-size-in-pickerview-in-swift-2-2
+
+https://stackoverflow.com/questions/20698547/how-can-i-change-text-font-in-uipickerview-in-ios-7
+
+https://stackoverflow.com/questions/33655015/changing-font-and-its-size-of-a-picker-in-swift
+
+Codes shown in Swift guy youtube channel: https://www.youtube.com/channel/UC-d1NWv5IWtIkfH47ux4dWA/videos
