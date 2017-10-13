@@ -57,6 +57,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        testPredictor()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

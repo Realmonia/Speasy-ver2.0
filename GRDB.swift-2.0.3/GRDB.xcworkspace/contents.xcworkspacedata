@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Playgrounds"
+      name = "Playgrounds">
+      <FileRef
+         location = "group:Tour.playground">
+      </FileRef>
+      <FileRef
+         location = "group:JSONSynchronization.playground">
+      </FileRef>
+      <FileRef
+         location = "group:Record.playground">
+      </FileRef>
+      <FileRef
+         location = "group:TransactionObserver.playground">
+      </FileRef>
+      <FileRef
+         location = "group:Issue156.playground">
+      </FileRef>
+      <FileRef
+         location = "group:MyPlayground.playground">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:GRDB.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tests/Performance/GRDBProfiling/GRDBProfiling.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DemoApps/GRDBDemoiOS/GRDBDemoiOS.xcodeproj">
+   </FileRef>
+</Workspace>
