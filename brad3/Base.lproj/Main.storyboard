@@ -54,6 +54,9 @@
                                 <state key="normal" title="Start">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="startButton:" destination="pph-fQ-XbW" eventType="touchUpInside" id="HCO-el-qlS"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yX1-37-tF9">
                                 <rect key="frame" x="32" y="217" width="311" height="180"/>
@@ -67,6 +70,9 @@
                                                 <state key="normal" title="word1">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onNextWord1:" destination="pph-fQ-XbW" eventType="touchUpInside" id="MUf-ff-udu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXl-y3-kYN">
                                                 <rect key="frame" x="155.5" y="0.0" width="155.5" height="90"/>
@@ -74,6 +80,9 @@
                                                 <state key="normal" title="word2">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onNextWord2:" destination="pph-fQ-XbW" eventType="touchUpInside" id="F1i-nf-PUR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -86,6 +95,9 @@
                                                 <state key="normal" title="word3">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onNextWord3:" destination="pph-fQ-XbW" eventType="touchUpInside" id="NVc-BJ-3FN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4n-GF-LwC">
                                                 <rect key="frame" x="155.5" y="0.0" width="155.5" height="90"/>
@@ -93,6 +105,9 @@
                                                 <state key="normal" title="word4">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onNextWord4:" destination="pph-fQ-XbW" eventType="touchUpInside" id="Fme-uv-9P7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -127,7 +142,12 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="pBX-Q6-I1T" id="an6-Dv-hDR"/>
+                        <outlet property="nextWordButton" destination="ezf-R0-gbK" id="NHs-r9-KKF"/>
+                        <outlet property="nextWordButton2" destination="fXl-y3-kYN" id="QiJ-d1-gMH"/>
+                        <outlet property="nextWordButton3" destination="BJW-8f-6Fg" id="V4T-1i-n3y"/>
+                        <outlet property="nextWordButton4" destination="d4n-GF-LwC" id="Yfe-lY-3uW"/>
                         <outlet property="predictedSentence" destination="PGy-OB-Rit" id="3VI-nO-kg1"/>
+                        <outlet property="startButtonObject" destination="q9Z-CO-xc1" id="fJj-vh-k8Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43f-0f-tBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
