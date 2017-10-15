@@ -7,14 +7,165 @@
 //
 
 import UIKit
+import Speech
 
-class SceneViewController: UIViewController {
+class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var predictedSentence: UITextView!
     
     @IBAction func backButton(_ sender: Any) {
     performSegue(withIdentifier: "backConnector", sender: self)
+    }
+    @IBOutlet weak var startButtonObject: UIButton!
+    @IBOutlet weak var nextWordButton: UIButton!
+    @IBOutlet weak var nextWordButton2: UIButton!
+    @IBOutlet weak var nextWordButton3: UIButton!
+    @IBOutlet weak var nextWordButton4: UIButton!
+    
+    @IBAction func onNextWord1(_ sender: UIButton) {
+        chooseNextWord(word: sender.currentTitle!)
+    }
+    @IBAction func onNextWord2(_ sender: UIButton) {
+        chooseNextWord(word: sender.currentTitle!)
+    }
+    @IBAction func onNextWord3(_ sender: UIButton) {
+        chooseNextWord(word: sender.currentTitle!)
+    }
+    @IBAction func onNextWord4(_ sender: UIButton) {
+        chooseNextWord(word: sender.currentTitle!)
+    }
+    
+    func chooseNextWord(word:String) {
+        predictedSentence.text.append(" "+word);
+        scrollToFit()
+        fillButton(sentence: predictedSentence.text)
+        toggleRecording()
+    }
+    
+    func fillButton(sentence:String) {
+        var predicts = predictor.nextWord(sentence: sentence)
+        if predicts.count>=1 {
+            nextWordButton.setTitle(predicts[0], for: .normal)
+        }
+        if predicts.count>=2 {
+        nextWordButton2.setTitle(predicts[1], for: .normal)
+        }
+        if predicts.count>=3 {
+        nextWordButton3.setTitle(predicts[2], for: .normal)
+        }
+        if predicts.count>=4 {
+        nextWordButton4.setTitle(predicts[3], for: .normal)
+        }
+    }
+    
+    let predictor = Predictor()
+    let speechRecognizer = SFSpeechRecognizer();
+    var recognitionRequest = SFSpeechAudioBufferRecognitionRequest();
+    var recognitionTask = SFSpeechRecognitionTask();
+    let audioEngine = AVAudioEngine();
+    var startIndex = 0
+    @IBAction func startButton(_ sender: UIButton) {
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in
+            OperationQueue.main.addOperation {
+                switch authStatus {
+                    case .authorized:
+                        self.startButtonObject.isEnabled = true
+                    case .denied:
+                        self.startButtonObject.isEnabled = false
+                        self.startButtonObject.setTitle("User denied access to speech recognition", for: .disabled)
+                    case .restricted:
+                        self.startButtonObject.isEnabled = false
+                        self.startButtonObject.setTitle("Speech recognition restricted on this device", for: .disabled)
+                    case .notDetermined:
+                        self.startButtonObject.isEnabled = false
+                        self.startButtonObject.setTitle("Speech recognition not yet authorized", for: .disabled)
+                }
+            }
+        }
+        toggleRecording();
+    }
+    
+    func toggleRecording() {
+        if predictedSentence.text.count>0 {
+            predictedSentence.text.append(" ")
+        }
+        if self.audioEngine.isRunning {
+            print("running")
+            let node = self.audioEngine.inputNode
+            node.removeTap(onBus: 0)
+            self.audioEngine.stop()
+            self.recognitionTask.finish()
+            self.recognitionRequest.endAudio()
+        }
+        self.startRecording()
+    }
+    
+    func scrollToFit() {
+        let stringLength = self.predictedSentence.text.characters.count
+        self.predictedSentence.scrollRangeToVisible(NSRange(location:stringLength-1,length:0))
+    }
+    
+    func startRecording() {
+        if audioEngine.isRunning {
+            print("running inside")
+        }
+        startIndex = predictedSentence.text.count
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("audioSession properties weren't set because of an error.")
+        }
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        
+        recognitionRequest.shouldReportPartialResults = true
+        recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            var isFinal = false
+            if result != nil {
+                
+                self.predictedSentence.text = String(self.predictedSentence.text.prefix(self.startIndex)) + result!.bestTranscription.formattedString
+                self.scrollToFit()
+                self.fillButton(sentence: self.predictedSentence.text)
+                isFinal = (result?.isFinal)!
+//                print(isFinal)
+            }
+            
+            if error != nil || isFinal {
+//                self.audioEngine.stop()
+//                inputNode.removeTap(onBus: 0)
+//                self.recognitionRequest.endAudio()
+//                self.audioEngine.stop()
+//                self.recognitionTask.finish()
+                print("final")
+            }
+            
+            if isFinal {
+                self.startButtonObject.isEnabled = true
+            }
+        })
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+            print("audioEngine started")
+        } catch {
+            print("audioEngine couldn't start because of an error.")
+        }
+        
+//        predictedSentence.text = "Say something, I'm listening!"
+        
     }
     
     override func viewDidLoad() {
@@ -41,6 +192,14 @@ class SceneViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        if available {
+            startButtonObject.isEnabled = true;
+        }else{
+            startButtonObject.isEnabled = false;
+        }
     }
     
 
