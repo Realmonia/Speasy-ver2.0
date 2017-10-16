@@ -37,7 +37,10 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func chooseNextWord(word:String) {
-        predictedSentence.text.append(" "+word);
+        if predictedSentence.text.count != 0 && predictedSentence.text.last != " " {
+            predictedSentence.text.append(" ");
+        }
+        predictedSentence.text.append(word);
         scrollToFit()
         fillButton(sentence: predictedSentence.text)
         toggleRecording()
@@ -83,11 +86,12 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }
+        predictedSentence.text = "";
         toggleRecording();
     }
     
     func toggleRecording() {
-        if predictedSentence.text.count>0 {
+        if (predictedSentence.text.count>0) {
             predictedSentence.text.append(" ")
         }
         if self.audioEngine.isRunning {
