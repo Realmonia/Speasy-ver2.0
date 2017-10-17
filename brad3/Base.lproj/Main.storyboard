@@ -187,6 +187,19 @@ The word you choose will appear on the screen.
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92q-dk-RL2">
+                                <rect key="frame" x="16" y="598" width="67" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.19851186261527853" green="0.7173098256526087" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="HelpBackButton:" destination="DDo-P5-3vf" eventType="touchUpInside" id="45d-ll-npF"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="helpBackSegue" id="3aA-cT-pT8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.211185437" green="0.65492687920000003" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="8a5-AC-Cqi"/>
@@ -283,4 +296,7 @@ The word you choose will appear on the screen.
             <point key="canvasLocation" x="-791.304347826087" y="79.891304347826093"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3aA-cT-pT8"/>
+    </inferredMetricsTieBreakers>
 </document>

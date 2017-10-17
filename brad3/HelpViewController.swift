@@ -11,7 +11,7 @@ import UIKit
 class HelpViewController: UIViewController {
 
     @IBAction func HelpBackButton(_ sender: Any) {
-//        performSegue(withIdentifier: "helpBackSegue", sender: self)
+                performSegue(withIdentifier: "helpBackSegue", sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
