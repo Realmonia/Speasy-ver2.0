@@ -18,6 +18,7 @@
 		1AB8BA741F912E6000221EE3 /* GRDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB8BA621F912E0600221EE3 /* GRDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1AB8BA771F912EAF00221EE3 /* Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A4C8E1E1F91133E0084E538 /* Model.bundle */; };
 		3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */; };
+		3E9A95B51F96BB3900BA340D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A95B41F96BB3900BA340D /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		1A4C8E1E1F91133E0084E538 /* Model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Model.bundle; sourceTree = "<group>"; };
 		1AB8BA351F912E0600221EE3 /* GRDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GRDB.xcodeproj; path = "GRDB.swift-2.0.3/GRDB.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		3E9A95B41F96BB3900BA340D /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				1A38F3761F854BED00E05659 /* AppDelegate.swift */,
 				1A38F3781F854BED00E05659 /* ViewController.swift */,
 				1A38F37A1F854BED00E05659 /* Main.storyboard */,
+				3E9A95B41F96BB3900BA340D /* HelpViewController.swift */,
 				3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */,
 				1A4C8E1E1F91133E0084E538 /* Model.bundle */,
 				1A38F38B1F854D9E00E05659 /* predictiveText.swift */,
@@ -475,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */,
+				3E9A95B51F96BB3900BA340D /* HelpViewController.swift in Sources */,
 				1A38F3791F854BED00E05659 /* ViewController.swift in Sources */,
 				1A38F37F1F854BED00E05659 /* brad3.xcdatamodeld in Sources */,
 				1A38F3771F854BED00E05659 /* AppDelegate.swift in Sources */,
