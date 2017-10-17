@@ -8,13 +8,13 @@ Speasy is an ios mobile app which helps people with speech difficulties. Speasy 
 
 
 ## How to use
-1. Select a scene and press “Confirm”.
+1. Select a scene and press “Confirm”.  
 You will enter the speech recognition view. 
 
-2. When you are ready to speak, press “Start”.
+2. When you are ready to speak, press “Start”.  
 The app will begin to recognize speech and predict the next word. 
 
-3. Select one of the four word choices
+3. Select one of the four word choices.  
 The word you choose will appear on the screen. 
 
 4. In the future, the app will be able to speak out the word you choose and customize the prediction according to the scene.
