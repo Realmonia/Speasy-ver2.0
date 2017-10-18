@@ -15,6 +15,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
 
+    @IBAction func helpButton(_ sender: Any) {
+        performSegue(withIdentifier: "HelpSegue", sender: self)
+    }
     let scenes = ["General", "Restaurant", "Library", "Bus Stop", "Airport"]
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
