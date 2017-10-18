@@ -37,20 +37,30 @@ class Predictor {
     func nextWord(sentence:String) -> [String] {
         var ret:[String]=[]
         let words = sentence.lowercased().components(separatedBy: toTrimSet)
-        if words.count < 2 {return ["word1","word2","word3","word4"]}
+//        if words.count < 2 {return ["word1","word2","word3","word4"]}
+        var word1="", word2="";
+        if words.count >= 2{word1 = words[words.endIndex-2]}
+        if words.count >= 1{word2 = words.last!}
+        var visited = Set<String>()
         do {
             try dbQueue.inDatabase({ db in
 //                print([words[words.endIndex-2], words.last])
-                let rows = try Row.fetchCursor(db, "SELECT word_3, count FROM markov_model WHERE word_1 = ? AND word_2 = ? ORDER BY count DESC LIMIT 1000", arguments:[words[words.endIndex-2], words.last])
-                var i = 0
-                while let row = try rows.next(){
-                    if (i>4) {break;}
-                    if let word = row["word_3"] as? String{
-                        if (word=="") {continue;}
-                        ret.append(word)
-                        print(word,(row["count"] as Int?)!)
+                var prevWords = [[word1,word2],["",word2],["",""]];
+                var i = 0, j = 0;
+                while i < 4{
+                    let rows = try Row.fetchCursor(db, "SELECT word_3, count FROM markov_model WHERE word_1 = ? AND word_2 = ? ORDER BY count DESC LIMIT 1000", arguments:[prevWords[j][0], prevWords[j][1]])
+                    while let row = try rows.next(){
+                        if (i>=4) {break;}
+                        if let word = row["word_3"] as? String{
+                            if (word=="") {continue;}
+                            if (visited.contains(word)) {continue;}
+                            ret.append(word)
+                            visited.insert(word)
+                            print(word,(row["count"] as Int?)!)
+                        }
+                        i+=1
                     }
-                    i+=1
+                    j+=1
                 }
             })
         } catch {
