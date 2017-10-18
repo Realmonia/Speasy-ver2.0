@@ -5,7 +5,16 @@
 Speasy is an ios mobile app which helps people with speech difficulties. Speasy uses the speech recognition API to recognize user’s voice. It will predict the potential words in the later conversation and in the future, it will play out the sentence with user’s own voice.
 
 ## Deployment Instruction
+1. Clone this repository:
+`git clone https://github.com/Realmonia/Speasy-ver2.0.git`
 
+2. Open `brad3.xcodeproj` in Xcode.
+
+3. Connect your iOS device to your Mac.
+
+4. In `Product > Destination`, select your iOS device as the destination.
+
+5. Click `Product > Run` (or `Command+R`) to build and run the app.
 
 ## How to use
 1. Select a scene and press “Confirm”.  
