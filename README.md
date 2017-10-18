@@ -16,6 +16,8 @@ Speasy is an ios mobile app which helps people with speech difficulties. Speasy 
 
 5. Click `Product > Run` (or `Command+R`) to build and run the app.
 
+6. If a code signing issue occurs, you can fix the issue by following [the instructions from Apple developer site](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW7 "configuring-your-app guide").
+
 ## How to use
 1. Select a scene and press “Confirm”.  
 You will enter the speech recognition view. 
