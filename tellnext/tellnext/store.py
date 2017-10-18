@@ -44,7 +44,7 @@ class SQLiteStore(BaseStore):
 
     def add_many(self, trigrams):
         trigrams = [(trigram[0] or '', trigram[1] or '', trigram[2] or '')
-                    for trigram in trigrams]
+                    for trigram in trigrams if trigram[0]!='__eou__' and trigram[1]!='__eou__' and trigram[2]!='__eou__']
 
         with self.connection:
             self.connection.executemany(
