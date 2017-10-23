@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56AFC9EE1CB1A8BB00F48B96"
-               BuildableName = "GRDBCipher.framework"
-               BlueprintName = "GRDBCipheriOS"
-               ReferencedContainer = "container:GRDB.xcodeproj">
+               BlueprintIdentifier = "1A38F3721F854BED00E05659"
+               BuildableName = "brad3.app"
+               BlueprintName = "brad3"
+               ReferencedContainer = "container:brad3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,34 +29,14 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56AFCA2B1CB1AA9900F48B96"
-               BuildableName = "GRDBCipheriOSTests.xctest"
-               BlueprintName = "GRDBCipheriOSTests"
-               ReferencedContainer = "container:GRDB.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56AFCA841CB1ABC800F48B96"
-               BuildableName = "GRDBCipheriOSEncryptedTests.xctest"
-               BlueprintName = "GRDBCipheriOSEncryptedTests"
-               ReferencedContainer = "container:GRDB.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56AFC9EE1CB1A8BB00F48B96"
-            BuildableName = "GRDBCipher.framework"
-            BlueprintName = "GRDBCipheriOS"
-            ReferencedContainer = "container:GRDB.xcodeproj">
+            BlueprintIdentifier = "1A38F3721F854BED00E05659"
+            BuildableName = "brad3.app"
+            BlueprintName = "brad3"
+            ReferencedContainer = "container:brad3.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -73,15 +53,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56AFC9EE1CB1A8BB00F48B96"
-            BuildableName = "GRDBCipher.framework"
-            BlueprintName = "GRDBCipheriOS"
-            ReferencedContainer = "container:GRDB.xcodeproj">
+            BlueprintIdentifier = "1A38F3721F854BED00E05659"
+            BuildableName = "brad3.app"
+            BlueprintName = "brad3"
+            ReferencedContainer = "container:brad3.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -91,15 +72,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56AFC9EE1CB1A8BB00F48B96"
-            BuildableName = "GRDBCipher.framework"
-            BlueprintName = "GRDBCipheriOS"
-            ReferencedContainer = "container:GRDB.xcodeproj">
+            BlueprintIdentifier = "1A38F3721F854BED00E05659"
+            BuildableName = "brad3.app"
+            BlueprintName = "brad3"
+            ReferencedContainer = "container:brad3.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
