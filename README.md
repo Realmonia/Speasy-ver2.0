@@ -32,3 +32,7 @@ The word you choose will appear on the screen.
 
 ## Support
 Currently this app supports iPhone 7, iPhone 7 Plus, iPhone 8, iPhone 8 plus.
+
+## FAQ
+* If you encounter a question when building the project, complaining "'GRDBCipher/sqlite3.h' file not found", that is a xcode issue. Please go to your xcode and follow: <br>
+Product >> Scheme >> Manage Schemes >> add a new scheme named "GRDBCipher" and then rebuild the whole project. Everything should work well now.
