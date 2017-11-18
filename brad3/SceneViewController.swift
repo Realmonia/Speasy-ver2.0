@@ -35,6 +35,14 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func onNextWord4(_ sender: UIButton) {
         chooseNextWord(word: sender.currentTitle!)
     }
+    let synth = AVSpeechSynthesizer();
+    var myUtterance = AVSpeechUtterance();
+    
+    func speak(word:String) {
+        myUtterance = AVSpeechUtterance(string: word);
+        myUtterance.rate = 0.3
+        synth.speak(myUtterance);
+    }
     
     func chooseNextWord(word:String) {
         if predictedSentence.text.count != 0 && predictedSentence.text.last != " " {
@@ -43,6 +51,8 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         predictedSentence.text.append(word);
         scrollToFit()
         fillButton(sentence: predictedSentence.text)
+//        stopRecording()
+        speak(word: word);
         toggleRecording()
     }
     
@@ -90,10 +100,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         toggleRecording();
     }
     
-    func toggleRecording() {
-        if (predictedSentence.text.count>0) {
-            predictedSentence.text.append(" ")
-        }
+    func stopRecording() {
         if self.audioEngine.isRunning {
             print("running")
             let node = self.audioEngine.inputNode
@@ -102,6 +109,13 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.recognitionTask.finish()
             self.recognitionRequest.endAudio()
         }
+    }
+    
+    func toggleRecording() {
+        if (predictedSentence.text.count>0) {
+            predictedSentence.text.append(" ")
+        }
+        stopRecording()
         self.startRecording()
     }
     
@@ -138,6 +152,12 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.fillButton(sentence: self.predictedSentence.text)
                 isFinal = (result?.isFinal)!
 //                print(isFinal)
+                var sum:Float = 0, count:Float = 0;
+                for segment in result!.bestTranscription.segments{
+                    sum += segment.confidence
+                    count += 1
+                }
+                print("confidence: "+String(sum/count))
             }
             
             if error != nil || isFinal {
