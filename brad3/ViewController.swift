@@ -77,7 +77,19 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func action(_ sender: Any) {
         scene = label.text!
-        performSegue(withIdentifier: "connector", sender: self)
+        performSegue(withIdentifier: "connector", sender: scene)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier  {
+            if identifier == "connector" {
+                if let destination = segue.destination as? SceneViewController{
+                    if let scene = sender as? String{
+                        destination.predictor = EnsemblePredictor(names: [scene.uppercased(), "MODEL"])
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
