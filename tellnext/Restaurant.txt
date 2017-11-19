@@ -1,0 +1,110 @@
+Restaurant 
+do you have any free tables?
+a table for two please
+a table for three please
+a table for four please
+I'd like to make a reservation
+I'd like to book a table, please
+when for?
+for what time?
+this evening at seven o'clock
+this evening at seven thirty o'clock
+this evening at eight o'clock o'clock
+this evening at eight thirty o'clock
+tomorrow at noon
+tomorrow at twelve thirty
+tomorrow at one o'clock
+tomorrow at one thirty
+for how many people?
+I've got a reservation
+do you have a reservation?
+could I see the menu, please?
+could I see the wine list, please?
+can I get you any drinks?
+are you ready to order?
+do you have any specials?
+what's the soup of the day?
+what do you recommend?
+what's this dish?
+I'm on a diet
+I'm allergic to wheat
+I'm allergic to dairy products
+I'm severely allergic to nuts
+I'm severely allergic to shellfish
+I'm a vegetarian
+I don't eat meat
+I don't eat pork
+I'll have the chicken breast
+I'll have the roast beef
+I'll have the cpasta
+I'll take this
+I'm sorry, we're out of that
+for my starter I'll have the soup, and for my main course the steak
+how would you like your steak?
+rare
+medium-rare
+medium
+well done
+is that all?
+would you like anything else?
+nothing else, thank you
+we're in a hurry
+how long will it take?
+it'll take about twenty minutes
+excuse me!
+enjoy your meal!
+bon appétit!
+would you like to taste the wine?
+could we have another bottle of wine
+could we have some more bread
+could we have some more milk
+could we have a jug of tap water
+could we have some water
+still or sparkling?
+would you like any coffee or dessert?
+do you have any desserts?
+could I see the dessert menu?
+was everything alright?
+thanks, that was delicious
+this isn't what I ordered
+this food's cold
+this is too salty
+this doesn't taste right
+we've been waiting a long time
+is our meal on its way?
+will our food be long?
+the bill, please
+could we have the bill, please?
+can I pay by card?
+do you take credit cards?
+is service included?
+can we pay separately?
+I'll get this
+let's split it
+let's share the bill
+Please wait to be seated
+Reserved
+Service included
+Service not included
+A table for two, please.
+May we sit at this table?
+The menu, please.
+What's on the menu?
+What's Irish Stew like?
+We're not ready yet.
+The steak for me, please.
+Can you bring me the ketchup, please?
+A salad, please.
+I'll have the same.
+That's all, thank you.
+Can I have the bill, please?
+This is on me.
+Here you are.
+The rest is for you.
+Do you have wine by the glass?
+I'd prefer red wine.
+Please bring us another beer.
+Could I have chips instead of salad?
+What can you recommend?
+Please bring me the bill with my coffee.
+I think you've made a mistake.

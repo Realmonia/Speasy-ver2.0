@@ -99,7 +99,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         }
     }
     
-    var predictor = EnsemblePredictor(names: ["SCHOOL", "MODEL"])
+    var predictor = EnsemblePredictor(names: ["MODEL"])
 //    let predictor = Predictor()
     var shouldUpdate : Bool = true;
     let speechRecognizer = SFSpeechRecognizer();
@@ -238,6 +238,23 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         } catch {
             // handle errors
         }
+
+        nextWordButton.titleLabel!.adjustsFontSizeToFitWidth = true
+        nextWordButton.titleLabel!.numberOfLines = 1
+        nextWordButton.titleLabel!.minimumScaleFactor = 0.1
+        nextWordButton.clipsToBounds = true
+        nextWordButton2.titleLabel!.adjustsFontSizeToFitWidth = true
+        nextWordButton2.titleLabel!.numberOfLines = 1
+        nextWordButton2.titleLabel!.minimumScaleFactor = 0.1
+        nextWordButton2.clipsToBounds = true
+        nextWordButton3.titleLabel!.adjustsFontSizeToFitWidth = true
+        nextWordButton3.titleLabel!.numberOfLines = 1
+        nextWordButton3.titleLabel!.minimumScaleFactor = 0.1
+        nextWordButton3.clipsToBounds = true
+        nextWordButton4.titleLabel!.adjustsFontSizeToFitWidth = true
+        nextWordButton4.titleLabel!.numberOfLines = 1
+        nextWordButton4.titleLabel!.minimumScaleFactor = 0.1
+        nextWordButton4.clipsToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

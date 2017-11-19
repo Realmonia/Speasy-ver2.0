@@ -12,6 +12,28 @@ var scene = ""
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBAction func SchoolButton(_ sender: Any) {
+        scene = "School"
+    }
+    
+    @IBAction func RestaurantButton(_ sender: Any) {
+        scene = "Restaurant"
+    }
+    
+    @IBAction func MarketButton(_ sender: Any) {
+        scene = "Market"
+    }
+    
+    @IBAction func TransportationButton(_ sender: Any) {
+        scene = "Transportation"
+    }
+
+    
+    @IBAction func GeneralButton(_ sender: Any) {
+        scene = "General"
+    }
+    
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
 
@@ -54,17 +76,36 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     @IBAction func action(_ sender: Any) {
-        scene = label.text!
+//        scene = label.text!
         performSegue(withIdentifier: "connector", sender: scene)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier  {
             if identifier == "connector" {
+                print("aaa")
                 if let destination = segue.destination as? SceneViewController{
+                    print("bbb")
+                    
+                    if let button = sender as? UIButton{
+                        print("ccc")
+                        if let scene = button.currentTitle{
+                            if scene != "General"{
+                                //                            print([scene.uppercased(), "MODEL"])
+                                destination.predictor = EnsemblePredictor(names: [scene.uppercased(), "MODEL"])
+                            }else{
+                                destination.predictor = EnsemblePredictor(names:["MODEL"])
+                            }
+                        }
+                    }
+                    
                     if let scene = sender as? String{
+                        print("ccc")
                         if scene != "General"{
+//                            print([scene.uppercased(), "MODEL"])
                             destination.predictor = EnsemblePredictor(names: [scene.uppercased(), "MODEL"])
+                        }else{
+                            destination.predictor = EnsemblePredictor(names:["MODEL"])
                         }
                     }
                 }
@@ -75,6 +116,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         testPredictor()
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
