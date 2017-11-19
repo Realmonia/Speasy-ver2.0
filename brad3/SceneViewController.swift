@@ -48,21 +48,26 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func fillButton(sentence:String) {
         var predicts = predictor.nextWord(sentence: sentence)
-        if predicts.count>=1 {
-            nextWordButton.setTitle(predicts[0], for: .normal)
-        }
-        if predicts.count>=2 {
-        nextWordButton2.setTitle(predicts[1], for: .normal)
-        }
-        if predicts.count>=3 {
-        nextWordButton3.setTitle(predicts[2], for: .normal)
-        }
-        if predicts.count>=4 {
-        nextWordButton4.setTitle(predicts[3], for: .normal)
-        }
+        if predicts.count>=1 {(
+            nextWordButton.setTitle(predicts[0], for: .normal),
+            print("first button:", phoneme_dict.findPhoneme(word: predicts[0]))
+        )}
+        if predicts.count>=2 {(
+            nextWordButton2.setTitle(predicts[1], for: .normal),
+            print("second button:", phoneme_dict.findPhoneme(word: predicts[1]))
+        )}
+        if predicts.count>=3 {(
+            nextWordButton3.setTitle(predicts[2], for: .normal),
+            print("third button:", phoneme_dict.findPhoneme(word: predicts[2]))
+        )}
+        if predicts.count>=4 {(
+            nextWordButton4.setTitle(predicts[3], for: .normal),
+            print("fourth button:", phoneme_dict.findPhoneme(word: predicts[3]))
+        )}
     }
     
     let predictor = Predictor()
+    let phoneme_dict = PhonemeUtils()
     let speechRecognizer = SFSpeechRecognizer();
     var recognitionRequest = SFSpeechAudioBufferRecognitionRequest();
     var recognitionTask = SFSpeechRecognitionTask();
