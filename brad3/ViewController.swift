@@ -12,6 +12,28 @@ var scene = ""
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBAction func SchoolButton(_ sender: Any) {
+        scene = "School"
+    }
+    
+    @IBAction func RestaurantButton(_ sender: Any) {
+        scene = "Restaurant"
+    }
+    
+    @IBAction func MarketButton(_ sender: Any) {
+        scene = "Market"
+    }
+    
+    @IBAction func TransportationButton(_ sender: Any) {
+        scene = "Transportation"
+    }
+
+    
+    @IBAction func GeneralButton(_ sender: Any) {
+        scene = "General"
+    }
+    
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
 
@@ -61,6 +83,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         testPredictor()
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
