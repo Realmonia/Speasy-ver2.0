@@ -10,6 +10,8 @@ import UIKit
 import Speech
 
 class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
+    
+    static let confidenceThreshold = 0.5
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var predictedSentence: UITextView!
@@ -180,18 +182,21 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
             }
             var isFinal = false
             if result != nil {
+                var sum:Double = 0, count:Double = 0;
+                for segment in result!.bestTranscription.segments{
+                    sum += Double(segment.confidence)
+                    count += 1
+                }
+                print("confidence: "+String(sum/count))
+                
+                if sum/count < SceneViewController.confidenceThreshold{
+                    return;
+                }
                 
                 self.predictedSentence.text = String(self.predictedSentence.text.prefix(self.startIndex)) + result!.bestTranscription.formattedString
                 self.scrollToFit()
                 self.fillButton(sentence: self.predictedSentence.text)
                 isFinal = (result?.isFinal)!
-//                print(isFinal)
-                var sum:Float = 0, count:Float = 0;
-                for segment in result!.bestTranscription.segments{
-                    sum += segment.confidence
-                    count += 1
-                }
-                print("confidence: "+String(sum/count))
             }
             
             if error != nil || isFinal {
