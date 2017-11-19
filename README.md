@@ -31,7 +31,7 @@ The word you choose will appear on the screen.
 4. In the future, the app will be able to speak out the word you choose and customize the prediction according to the scene.
 
 ## Support
-Currently this app supports iPhone 7, iPhone 7 Plus, iPhone 8, iPhone 8 plus.
+Currently this app supports iPhone X. The app will support all different kinds of iPhones in the next release.
 
 ## FAQ
 * If you encounter a question when building the project, complaining "'GRDBCipher/sqlite3.h' file not found", that is a xcode issue. Please go to your xcode and follow: <br>
