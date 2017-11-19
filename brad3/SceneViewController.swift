@@ -9,7 +9,7 @@
 import UIKit
 import Speech
 
-class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
+class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var predictedSentence: UITextView!
@@ -39,21 +39,48 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     var myUtterance = AVSpeechUtterance();
     
     func speak(word:String) {
+        if !synth.isSpeaking{
+            print("-------speaking-------")
+        }
         myUtterance = AVSpeechUtterance(string: word);
-        myUtterance.rate = 0.3
+//        myUtterance.rate = 0.3
+        myUtterance.volume = 1
         synth.speak(myUtterance);
     }
     
+    var ongoingUtterance : [String:Int] = [String:Int]()
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        let word = utterance.speechString;
+        ongoingUtterance[word]!-=1;
+        if ongoingUtterance[word] == 0 {
+            ongoingUtterance.removeValue(forKey: word);
+        }
+        if !synth.isSpeaking && ongoingUtterance.isEmpty {
+            shouldUpdate = true;
+            print("---------ends---------")
+            startRecording()
+        }
+    }
+    
     func chooseNextWord(word:String) {
+        shouldUpdate = false;
         if predictedSentence.text.count != 0 && predictedSentence.text.last != " " {
             predictedSentence.text.append(" ");
         }
         predictedSentence.text.append(word);
         scrollToFit()
         fillButton(sentence: predictedSentence.text)
-//        stopRecording()
-//        speak(word: word);
-        toggleRecording()
+        self.speak(word: word);
+        if ongoingUtterance.keys.contains(word) {
+            ongoingUtterance[word]!+=1;
+        }else{
+            ongoingUtterance[word]=1;
+        }
+        if (predictedSentence.text.count>0) {
+            predictedSentence.text.append(" ")
+        }
+        stopRecording()
     }
     
     func fillButton(sentence:String) {
@@ -74,6 +101,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var predictor = EnsemblePredictor(names: ["SCHOOL", "MODEL"])
 //    let predictor = Predictor()
+    var shouldUpdate : Bool = true;
     let speechRecognizer = SFSpeechRecognizer();
     var recognitionRequest = SFSpeechAudioBufferRecognitionRequest();
     var recognitionTask = SFSpeechRecognitionTask();
@@ -110,6 +138,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.recognitionTask.finish()
             self.recognitionRequest.endAudio()
         }
+        startIndex = predictedSentence.text.count
     }
     
     func toggleRecording() {
@@ -128,11 +157,12 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     func startRecording() {
         if audioEngine.isRunning {
             print("running inside")
+            return;
         }
-        startIndex = predictedSentence.text.count
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+//            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+//            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
@@ -145,6 +175,9 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         recognitionRequest.shouldReportPartialResults = true
         recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            if(!self.shouldUpdate) {
+                return;
+            }
             var isFinal = false
             if result != nil {
                 
@@ -197,6 +230,14 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         label.text = scene
         predictedSentence.isUserInteractionEnabled = false
+        let audioSession = AVAudioSession.sharedInstance()
+        synth.delegate = self
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
+            try audioSession.setActive(false, with: .notifyOthersOnDeactivation)
+        } catch {
+            // handle errors
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

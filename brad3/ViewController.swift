@@ -63,7 +63,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             if identifier == "connector" {
                 if let destination = segue.destination as? SceneViewController{
                     if let scene = sender as? String{
-                        destination.predictor = EnsemblePredictor(names: [scene.uppercased(), "MODEL"])
+                        if scene != "General"{
+                            destination.predictor = EnsemblePredictor(names: [scene.uppercased(), "MODEL"])
+                        }
                     }
                 }
             }
