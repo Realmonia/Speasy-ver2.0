@@ -28,8 +28,6 @@ The app will begin to recognize speech and predict the next word.
 3. Select one of the four word choices.  
 The word you choose will appear on the screen. 
 
-4. In the future, the app will be able to speak out the word you choose and customize the prediction according to the scene.
-
 ## Support
 Currently this app supports iPhone X. The app will support all different kinds of iPhones in the next release.
 
