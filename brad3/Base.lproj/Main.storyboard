@@ -158,10 +158,8 @@ The app will begin to recognize speech and predict the next word.
 
 3. Select one of the four word choices
 The word you choose will appear on the screen. 
-
-4. In the future, the app will be able to speak out the word you choose and customize the prediction according to the scene.
 </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -280,7 +278,7 @@ The word you choose will appear on the screen.
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IF7-gT-8Cc"/>
+        <segue reference="3aA-cT-pT8"/>
         <segue reference="gv8-qP-OUe"/>
     </inferredMetricsTieBreakers>
 </document>
