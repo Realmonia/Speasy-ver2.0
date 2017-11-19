@@ -190,7 +190,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
                 print("confidence: "+String(sum/count))
                 
                 if sum/count < SceneViewController.confidenceThreshold{
-                    return;
+//                    return;
                 }
                 
                 self.predictedSentence.text = String(self.predictedSentence.text.prefix(self.startIndex)) + result!.bestTranscription.formattedString
