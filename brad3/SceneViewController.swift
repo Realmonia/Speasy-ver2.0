@@ -52,7 +52,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         scrollToFit()
         fillButton(sentence: predictedSentence.text)
 //        stopRecording()
-        speak(word: word);
+//        speak(word: word);
         toggleRecording()
     }
     
@@ -72,7 +72,8 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    let predictor = Predictor()
+    var predictor = EnsemblePredictor(names: ["SCHOOL", "MODEL"])
+//    let predictor = Predictor()
     let speechRecognizer = SFSpeechRecognizer();
     var recognitionRequest = SFSpeechAudioBufferRecognitionRequest();
     var recognitionTask = SFSpeechRecognitionTask();

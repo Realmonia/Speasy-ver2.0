@@ -77,6 +77,7 @@ class EnsemblePredictor {
         for name in names {
             predictors.append(Predictor(name: name));
         }
+        print(names)
     }
     
     convenience init() {
@@ -93,27 +94,26 @@ class EnsemblePredictor {
         do {
             var prevWords = [[word1,word2],["",word2],["",""]];
             for j in 0..<3 {
-                while ret.count < 4{
-                    for predictor in predictors{
-                        try predictor.dbQueue.inDatabase({ db in
-                            let rows = try Row.fetchCursor(db, "SELECT word_3, count FROM markov_model WHERE word_1 = ? AND word_2 = ? ORDER BY count DESC LIMIT 1000", arguments:[prevWords[j][0], prevWords[j][1]])
-                            while let row = try rows.next(){
-                                if (ret.count >= 4){ break}
-                                if let word = row["word_3"] as? String{
-                                    if (word == "") {continue;}
-                                    if (visited.contains(word)) {continue;}
-                                    ret.append(word);
-                                    visited.insert(word)
-                                    print(word, predictor.DBname, (row["count"] as  Int?)!)
-                                }
+                for predictor in predictors{
+                    try predictor.dbQueue.inDatabase({ db in
+                        let rows = try Row.fetchCursor(db, "SELECT word_3, count FROM markov_model WHERE word_1 = ? AND word_2 = ? ORDER BY count DESC LIMIT 1000", arguments:[prevWords[j][0], prevWords[j][1]])
+                        while let row = try rows.next(){
+                            if (ret.count >= 4){ break }
+                            if let word = row["word_3"] as? String{
+                                if (word == "") {continue;}
+                                if (visited.contains(word)) {continue;}
+                                ret.append(word);
+                                visited.insert(word)
+                                print(predictor.DBname, word, (row["count"] as  Int?)!)
                             }
-                        })
-                    }
+                        }
+                    })
                 }
             }
         } catch {
             print("query ended with "+String(ret.count)+" results")
         }
+        print("returning-------------")
         return ret
     }
 }
