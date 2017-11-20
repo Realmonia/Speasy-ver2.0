@@ -17,6 +17,7 @@
 		1AB8BA731F912E6000221EE3 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB8BA621F912E0600221EE3 /* GRDB.framework */; };
 		1AB8BA741F912E6000221EE3 /* GRDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB8BA621F912E0600221EE3 /* GRDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1AB8BA771F912EAF00221EE3 /* Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A4C8E1E1F91133E0084E538 /* Model.bundle */; };
+		1ACD0CE81FA790B600979668 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACD0CE71FA790AB00979668 /* AVFoundation.framework */; };
 		3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */; };
 		3E9A95B51F96BB3900BA340D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A95B41F96BB3900BA340D /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -190,6 +191,7 @@
 		1A38F38B1F854D9E00E05659 /* predictiveText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = predictiveText.swift; sourceTree = "<group>"; };
 		1A4C8E1E1F91133E0084E538 /* Model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Model.bundle; sourceTree = "<group>"; };
 		1AB8BA351F912E0600221EE3 /* GRDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GRDB.xcodeproj; path = "GRDB.swift-2.0.3/GRDB.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		1ACD0CE71FA790AB00979668 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		3E9A95B41F96BB3900BA340D /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ACD0CE81FA790B600979668 /* AVFoundation.framework in Frameworks */,
 				1AB8BA731F912E6000221EE3 /* GRDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +214,7 @@
 			children = (
 				1A38F3751F854BED00E05659 /* brad3 */,
 				1A38F3741F854BED00E05659 /* Products */,
+				1ACD0CD51FA790AA00979668 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,6 +268,14 @@
 				1AB8BA701F912E0600221EE3 /* GRDB.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1ACD0CD51FA790AA00979668 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1ACD0CE71FA790AB00979668 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

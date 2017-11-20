@@ -18,11 +18,10 @@ func getPathtoDB(name:String) -> String {
 class Predictor {
     var DBname:String
     var dbQueue:DatabaseQueue;
-    var toTrimSet:CharacterSet
+    static let toTrimSet:CharacterSet = CharacterSet.whitespacesAndNewlines.union(CharacterSet.punctuationCharacters).union(CharacterSet.symbols);
     
     init(name:String) {
         DBname = name
-        toTrimSet = CharacterSet.whitespacesAndNewlines.union(CharacterSet.punctuationCharacters).union(CharacterSet.symbols);
         do{dbQueue = try DatabaseQueue(path:getPathtoDB(name: DBname))}
         catch{
             print("database not found!!!!!")
@@ -36,7 +35,7 @@ class Predictor {
     
     func nextWord(sentence:String) -> [String] {
         var ret:[String]=[]
-        let words = sentence.lowercased().components(separatedBy: toTrimSet)
+        let words = sentence.lowercased().components(separatedBy: Predictor.toTrimSet)
 //        if words.count < 2 {return ["word1","word2","word3","word4"]}
         var word1="", word2="";
         if words.count >= 2{word1 = words[words.endIndex-2]}
@@ -67,6 +66,55 @@ class Predictor {
             print("query ended with "+String(ret.count)+" results")
         }
         return ret;
+    }
+}
+
+class EnsemblePredictor {
+    var predictors : [Predictor];
+    
+    init(names:[String]) {
+        predictors = [];
+        for name in names {
+            predictors.append(Predictor(name: name));
+        }
+        print(names)
+    }
+    
+    convenience init() {
+        self.init(names: ["MODEL"]);
+    }
+    
+    func nextWord(sentence:String) -> [String] {
+        var ret:[String] = []
+        let words = sentence.lowercased().components(separatedBy: Predictor.toTrimSet)
+        var word1="", word2="";
+        if words.count >= 2{word1 = words[words.endIndex-2]}
+        if words.count >= 1{word2 = words.last!}
+        var visited = Set<String>()
+        do {
+            var prevWords = [[word1,word2],["",word2],["",""]];
+            for j in 0..<3 {
+                for predictor in predictors{
+                    try predictor.dbQueue.inDatabase({ db in
+                        let rows = try Row.fetchCursor(db, "SELECT word_3, count FROM markov_model WHERE word_1 = ? AND word_2 = ? ORDER BY count DESC LIMIT 1000", arguments:[prevWords[j][0], prevWords[j][1]])
+                        while let row = try rows.next(){
+                            if (ret.count >= 4){ break }
+                            if let word = row["word_3"] as? String{
+                                if (word == "") {continue;}
+                                if (visited.contains(word)) {continue;}
+                                ret.append(word);
+                                visited.insert(word)
+                                print(predictor.DBname, word, (row["count"] as  Int?)!)
+                            }
+                        }
+                    })
+                }
+            }
+        } catch {
+            print("query ended with "+String(ret.count)+" results")
+        }
+        print("returning-------------")
+        return ret
     }
 }
 

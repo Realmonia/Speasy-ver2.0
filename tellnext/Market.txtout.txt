@@ -1,0 +1,72 @@
+market 
+could you tell me where the milk is
+could you tell me where the bread counter is
+could you tell me where the meat section is
+could you tell me where the frozen food section is
+are you being served
+i'd like that piece of cheese
+i'd like a slice of pizza
+i'd like six slices of ham
+i'd like some olives
+how much would you like
+300 grams
+half a kilo
+two pounds
+could i have a carrier bag please
+could i have another carrier bag please
+do you need any help packing
+do you have a loyalty card
+checkout
+8 items or less
+basket only
+cash only
+best before end
+use by
+could i try this on
+could i try these on
+could i try these shoes on
+do you want to try it on
+do you want to try them on
+what size are you
+what size do you take
+i take a size 
+do you have this in a size 
+do you have these in a size
+do you have a fitting room
+where's the fitting room
+have you got this in a smaller size
+have you got this in a larger size
+could you measure my waist
+could you measure my neck
+could you measure my chest
+is that a good fit
+it's much too small
+it's a little too small
+it's a little too big
+it's much too big
+it's just right
+they're just right
+it doesn't fit
+they don't fit
+how do they feel
+do they feel comfortable
+it suits you
+they suit you
+is this the only colour you've got
+what do you think of these
+i like them
+i don't like them
+i don't like the colour
+what are these made of
+are these washable
+no they have to be dry-cleaned
+i'll take it
+i'll take them
+i'll take this
+i'll take these
+menswear
+womenswear
+ladieswear
+childrenswear
+babywear
+fitting room
