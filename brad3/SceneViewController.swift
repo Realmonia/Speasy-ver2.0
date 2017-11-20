@@ -50,7 +50,8 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         var predicts = predictor.nextWord(sentence: sentence)
         if predicts.count>=1 {(
             nextWordButton.setTitle(predicts[0], for: .normal),
-            print("first button:", phoneme_dict.findPhoneme(word: predicts[0]))
+            print("first button:", phoneme_dict.findPhoneme(word: predicts[0])),
+            playVoice(word: predicts[0])
         )}
         if predicts.count>=2 {(
             nextWordButton2.setTitle(predicts[1], for: .normal),
@@ -67,7 +68,6 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     let predictor = Predictor()
-    let phoneme_dict = PhonemeUtils()
     let speechRecognizer = SFSpeechRecognizer();
     var recognitionRequest = SFSpeechAudioBufferRecognitionRequest();
     var recognitionTask = SFSpeechRecognitionTask();
