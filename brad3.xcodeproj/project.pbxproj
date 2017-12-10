@@ -20,6 +20,9 @@
 		1ACD0CE81FA790B600979668 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACD0CE71FA790AB00979668 /* AVFoundation.framework */; };
 		3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */; };
 		3E9A95B51F96BB3900BA340D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A95B41F96BB3900BA340D /* HelpViewController.swift */; };
+		7065E7631FBA151500EFCABC /* phonemeLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7065E7621FBA151500EFCABC /* phonemeLookup.swift */; };
+		7065E7761FC1120A00EFCABC /* getAudioForPhonemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7065E7751FC1120A00EFCABC /* getAudioForPhonemes.swift */; };
+		70B9DE441FAB6AC3005DB624 /* recordConcate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B9DE431FAB6AC3005DB624 /* recordConcate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +197,9 @@
 		1ACD0CE71FA790AB00979668 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3E7FFD221F8B2ACA00585233 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		3E9A95B41F96BB3900BA340D /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		7065E7621FBA151500EFCABC /* phonemeLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = phonemeLookup.swift; sourceTree = "<group>"; };
+		7065E7751FC1120A00EFCABC /* getAudioForPhonemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getAudioForPhonemes.swift; sourceTree = "<group>"; };
+		70B9DE431FAB6AC3005DB624 /* recordConcate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordConcate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,9 @@
 				1A38F3821F854BED00E05659 /* LaunchScreen.storyboard */,
 				1A38F3851F854BED00E05659 /* Info.plist */,
 				1A38F37D1F854BED00E05659 /* brad3.xcdatamodeld */,
+				70B9DE431FAB6AC3005DB624 /* recordConcate.swift */,
+				7065E7621FBA151500EFCABC /* phonemeLookup.swift */,
+				7065E7751FC1120A00EFCABC /* getAudioForPhonemes.swift */,
 			);
 			path = brad3;
 			sourceTree = "<group>";
@@ -491,10 +500,13 @@
 			files = (
 				3E7FFD231F8B2ACA00585233 /* SceneViewController.swift in Sources */,
 				3E9A95B51F96BB3900BA340D /* HelpViewController.swift in Sources */,
+				7065E7761FC1120A00EFCABC /* getAudioForPhonemes.swift in Sources */,
 				1A38F3791F854BED00E05659 /* ViewController.swift in Sources */,
 				1A38F37F1F854BED00E05659 /* brad3.xcdatamodeld in Sources */,
+				7065E7631FBA151500EFCABC /* phonemeLookup.swift in Sources */,
 				1A38F3771F854BED00E05659 /* AppDelegate.swift in Sources */,
 				1A38F38C1F854D9E00E05659 /* predictiveText.swift in Sources */,
+				70B9DE441FAB6AC3005DB624 /* recordConcate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +658,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z8KNQ3X92Q;
+				DEVELOPMENT_TEAM = 57RRN29Z73;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -667,7 +679,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z8KNQ3X92Q;
+				DEVELOPMENT_TEAM = 57RRN29Z73;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
