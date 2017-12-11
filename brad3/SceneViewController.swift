@@ -16,6 +16,18 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var predictedSentence: UITextView!
     
+    @IBOutlet weak var startTextField: UITextView!
+    
+    @IBOutlet weak var word1Button: UIButton!
+    
+    @IBOutlet weak var word2Button: UIButton!
+    
+    @IBOutlet weak var word3Button: UIButton!
+    
+    @IBOutlet weak var word4Button: UIButton!
+    
+    @IBOutlet weak var startButton: UIButton!
+    
     @IBAction func backButton(_ sender: Any) {
     performSegue(withIdentifier: "backConnector", sender: self)
     }
@@ -239,6 +251,18 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
     override func viewDidLoad() {
         super.viewDidLoad()
         label.text = scene
+        
+        word1Button.layer.borderWidth = 1;
+        
+        word2Button.layer.borderWidth = 1;
+        
+        word3Button.layer.borderWidth = 1;
+        
+        word4Button.layer.borderWidth = 1;
+        
+        startButton.layer.borderWidth = 1;
+        
+        startTextField.layer.borderWidth = 1;
         predictedSentence.isUserInteractionEnabled = false
         let audioSession = AVAudioSession.sharedInstance()
         synth.delegate = self

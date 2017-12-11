@@ -11,7 +11,16 @@ import UIKit
 var scene = ""
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    @IBOutlet weak var schoolButton: UIButton!
+    
+    @IBOutlet weak var marketButton: UIButton!
+    
+    @IBOutlet weak var restaurantButton: UIButton!
+    
+    @IBOutlet weak var transportationButton: UIButton!
+    
+    @IBOutlet weak var generalButton: UIButton!
+    
     @IBAction func SchoolButton(_ sender: Any) {
         scene = "School"
     }
@@ -116,6 +125,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         testPredictor()
+        schoolButton.layer.borderWidth = 1;
+        
+        restaurantButton.layer.borderWidth = 1;
+        
+        marketButton.layer.borderWidth = 1;
+        
+        transportationButton.layer.borderWidth = 1;
+        
+        generalButton.layer.borderWidth = 1;
+        
+        
 
         // Do any additional setup after loading the view, typically from a nib.
     }
