@@ -27,6 +27,7 @@ func concatenateFiles(audioFiles: [NSURL]) {
         let fileURL = audioFiles[0]
         do {
             synthVoice = try AVAudioPlayer(contentsOf: fileURL as URL)
+            synthVoice?.volume = 10
             synthVoice?.play()
         }
         catch{}
@@ -81,7 +82,7 @@ func concatenateFiles(audioFiles: [NSURL]) {
                 print("Export complete")
                 do {
                     synthVoice = try AVAudioPlayer(contentsOf: fileURL)
-                    synthVoice?.volume = 100
+                    synthVoice?.volume = 10
                     synthVoice?.play()
                 }
                 catch{}
