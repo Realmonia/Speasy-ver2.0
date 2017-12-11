@@ -259,7 +259,6 @@ The word you choose will appear on the screen.
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="SchoolButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ys7-4z-E4d"/>
-                                    <segue destination="pph-fQ-XbW" kind="show" identifier="connector" id="gv8-qP-OUe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b27-1o-BOe">
@@ -284,7 +283,6 @@ The word you choose will appear on the screen.
                                 </state>
                                 <connections>
                                     <action selector="RestaurantButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BSC-Zn-jRb"/>
-                                    <segue destination="pph-fQ-XbW" kind="show" identifier="connector" id="Ahj-sy-r7F"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3Y-Gx-B50">
@@ -315,7 +313,6 @@ The word you choose will appear on the screen.
                                 </state>
                                 <connections>
                                     <action selector="MarketButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="of0-W5-hZ9"/>
-                                    <segue destination="pph-fQ-XbW" kind="show" identifier="connector" id="cMC-pm-Jo1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELN-Lb-oq7">
@@ -346,7 +343,6 @@ The word you choose will appear on the screen.
                                 </state>
                                 <connections>
                                     <action selector="TransportationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XRh-Ow-J0y"/>
-                                    <segue destination="pph-fQ-XbW" kind="show" identifier="connector" id="7Vc-7x-XYR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hy9-ws-H4t">
@@ -358,7 +354,6 @@ The word you choose will appear on the screen.
                                 </state>
                                 <connections>
                                     <action selector="GeneralButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YXo-hU-msM"/>
-                                    <segue destination="pph-fQ-XbW" kind="show" identifier="connector" id="Cqj-UE-M7b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -371,6 +366,7 @@ The word you choose will appear on the screen.
                         <outlet property="restaurantButton" destination="b27-1o-BOe" id="vcR-GN-AtT"/>
                         <outlet property="schoolButton" destination="OYf-OI-Nm2" id="Sz7-Ay-hoa"/>
                         <outlet property="transportationButton" destination="ELN-Lb-oq7" id="ssc-Uf-hEL"/>
+                        <segue destination="pph-fQ-XbW" kind="show" identifier="connector" id="Thn-QL-Wui"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -380,6 +376,5 @@ The word you choose will appear on the screen.
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="IF7-gT-8Cc"/>
-        <segue reference="gv8-qP-OUe"/>
     </inferredMetricsTieBreakers>
 </document>

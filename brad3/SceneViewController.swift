@@ -61,7 +61,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         }
         myUtterance = AVSpeechUtterance(string: word);
 //        myUtterance.rate = 0.3
-        myUtterance.volume = 1
+        myUtterance.volume = 10
         synth.speak(myUtterance);
     }
     

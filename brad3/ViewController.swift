@@ -23,23 +23,28 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func SchoolButton(_ sender: Any) {
         scene = "School"
+        performSegue(withIdentifier: "connector", sender: scene)
     }
     
     @IBAction func RestaurantButton(_ sender: Any) {
         scene = "Restaurant"
+        performSegue(withIdentifier: "connector", sender: scene)
     }
     
     @IBAction func MarketButton(_ sender: Any) {
         scene = "Market"
+        performSegue(withIdentifier: "connector", sender: scene)
     }
     
     @IBAction func TransportationButton(_ sender: Any) {
         scene = "Transportation"
+        performSegue(withIdentifier: "connector", sender: scene)
     }
 
     
     @IBAction func GeneralButton(_ sender: Any) {
         scene = "General"
+        performSegue(withIdentifier: "connector", sender: scene)
     }
     
     

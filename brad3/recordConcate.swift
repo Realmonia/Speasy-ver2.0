@@ -58,12 +58,13 @@ func concatenateFiles(audioFiles: [NSURL], delegate: AVAudioPlayerDelegate) -> S
         }
     }
     
-    let temp_path: String = Bundle.main.path(forResource: "Model", ofType: "bundle")! + "/hanhm_record/tempPath.wav"
+//    let temp_path: String = Bundle.main.path(forResource: "Model", ofType: "bundle")! + "/hanhm_record/tempPath.wav"
+    let fileURL = try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("tempPath.wav")
 
     // Export the new file
     if let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetPassthrough) {
-        print(temp_path)
-        let fileURL = URL(fileURLWithPath: temp_path)
+//        print(temp_path)
+//        let fileURL = URL(fileURLWithPath: temp_path)
         // Remove existing file (to override if name conflict)
         print("wtf??",fileURL.path)
         do {
@@ -96,5 +97,5 @@ func concatenateFiles(audioFiles: [NSURL], delegate: AVAudioPlayerDelegate) -> S
             return
         }
     }
-    return temp_path
+    return fileURL.path
 }
