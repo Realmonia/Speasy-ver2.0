@@ -18,6 +18,15 @@ import AVFoundation
 // possible optimization: after a new word has been selected, prompted next time when open if Brad thinks he need to record the word one time
 func concatenateFiles(audioFiles: [NSURL], delegate: AVAudioPlayerDelegate) -> String {
     
+    let audioSession = AVAudioSession.sharedInstance();
+    do{
+        try audioSession.setCategory(AVAudioSessionCategoryPlayback, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
+        try audioSession.setMode(AVAudioSessionModeVoiceChat)
+        try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+    }catch{
+        print("Unable to set audiosession when speaking")
+    }
+    
     // check if there is more than on target audio files
     guard audioFiles.count > 0 else {
         return ""

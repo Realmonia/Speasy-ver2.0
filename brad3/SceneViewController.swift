@@ -56,8 +56,17 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
     var myUtterance = AVSpeechUtterance();
     
     func speak(word:String) {
-        if !synth.isSpeaking{
+        if !synth.isSpeaking && audioCount != 0{
             print("-------speaking-------")
+        }else{
+            let audioSession = AVAudioSession.sharedInstance();
+            do{
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
+                try audioSession.setMode(AVAudioSessionModeVoiceChat)
+                try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+            }catch{
+                print("Unable to set audiosession when speaking")
+            }
         }
         myUtterance = AVSpeechUtterance(string: word);
 //        myUtterance.rate = 0.3
@@ -68,7 +77,6 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
     var ongoingUtterance : [String:Int] = [String:Int]()
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        let word = utterance.speechString;
 //        ongoingUtterance[word]!-=1;
 //        if ongoingUtterance[word] == 0 {
 //            ongoingUtterance.removeValue(forKey: word);
@@ -78,22 +86,28 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
 //            print("---------ends---------")
 //            startRecording()
 //        }
-        audioCount -= 1;
-        if audioCount == 0 && !synth.isSpeaking {
-            shouldUpdate = true;
-            print("---------ends---------")
-            startRecording()
-        }
+        stoppedSpeaking()
     }
     
     var audioCount = 0;
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        print("++++++++++++++++++")
+        stoppedSpeaking()
+    }
+    
+    func stoppedSpeaking() {
         audioCount -= 1;
         if audioCount == 0 && !synth.isSpeaking {
             shouldUpdate = true;
             print("---------ends---------")
+            let audioSession = AVAudioSession.sharedInstance();
+            do {
+                try audioSession.setActive(false, with: .notifyOthersOnDeactivation)
+            }
+            catch
+            {
+                print("audioSession: unable to deactivate")
+            }
             startRecording()
         }
     }
@@ -182,6 +196,11 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
             self.audioEngine.stop()
             self.recognitionTask.finish()
             self.recognitionRequest.endAudio()
+            do{
+                try AVAudioSession.sharedInstance().setActive(false, with: .notifyOthersOnDeactivation);
+            }catch {
+                print("Unable to stop recording and set audio session inactive")
+            }
         }
         startIndex = predictedSentence.text.count
     }
@@ -207,8 +226,8 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         let audioSession = AVAudioSession.sharedInstance()
         do {
 //            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-//            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
+            try audioSession.setMode(AVAudioSessionModeVoiceChat)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
             print("audioSession properties weren't set because of an error.")
