@@ -19,7 +19,7 @@ func findFileName(phoneme_name:String) -> String {
     return path
 }
 
-func playVoice(word: String) -> (){
+func playVoice(word: String, delegate: AVAudioPlayerDelegate) -> Bool{
     var path_array: [NSURL] = []
     let phoneme_name_list = phoneme_dict.findPhoneme(word: word)
     for phoneme_name in phoneme_name_list {
@@ -28,7 +28,7 @@ func playVoice(word: String) -> (){
         path_array.append(url)
     }
     
-    let conc_rst_path = concatenateFiles(audioFiles: path_array)
+    let conc_rst_path = concatenateFiles(audioFiles: path_array, delegate: delegate)
     
     if conc_rst_path == "" {
         print("concatenation fail")
@@ -39,9 +39,14 @@ func playVoice(word: String) -> (){
     let out_url = URL(fileURLWithPath: temp_path)
 
     do {
+        print("==================")
         synthVoice = try AVAudioPlayer(contentsOf: out_url)
-        synthVoice?.play()
+        synthVoice?.volume = 10
+        synthVoice?.delegate = delegate;
+//        synthVoice?.play()
+        return true;
     } catch {
         print("synthesized file loaded fail")
+        return false;
     }
 }

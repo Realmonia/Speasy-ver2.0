@@ -9,7 +9,7 @@
 import UIKit
 import Speech
 
-class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
+class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     
     static let confidenceThreshold = 0.5
 
@@ -24,6 +24,9 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
     @IBOutlet weak var nextWordButton2: UIButton!
     @IBOutlet weak var nextWordButton3: UIButton!
     @IBOutlet weak var nextWordButton4: UIButton!
+    @IBOutlet weak var bradsVoiceSwitch: UISwitch!
+    @IBAction func onBradsVoiceSwitch(_ sender: UISwitch) {
+    }
     
     @IBAction func onNextWord1(_ sender: UIButton) {
         chooseNextWord(word: sender.currentTitle!)
@@ -54,11 +57,29 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         let word = utterance.speechString;
-        ongoingUtterance[word]!-=1;
-        if ongoingUtterance[word] == 0 {
-            ongoingUtterance.removeValue(forKey: word);
+//        ongoingUtterance[word]!-=1;
+//        if ongoingUtterance[word] == 0 {
+//            ongoingUtterance.removeValue(forKey: word);
+//        }
+//        if !synth.isSpeaking && ongoingUtterance.isEmpty {
+//            shouldUpdate = true;
+//            print("---------ends---------")
+//            startRecording()
+//        }
+        audioCount -= 1;
+        if audioCount == 0 && !synth.isSpeaking {
+            shouldUpdate = true;
+            print("---------ends---------")
+            startRecording()
         }
-        if !synth.isSpeaking && ongoingUtterance.isEmpty {
+    }
+    
+    var audioCount = 0;
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("++++++++++++++++++")
+        audioCount -= 1;
+        if audioCount == 0 && !synth.isSpeaking {
             shouldUpdate = true;
             print("---------ends---------")
             startRecording()
@@ -73,11 +94,17 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         predictedSentence.text.append(word);
         scrollToFit()
         fillButton(sentence: predictedSentence.text)
-        self.speak(word: word);
-        if ongoingUtterance.keys.contains(word) {
-            ongoingUtterance[word]!+=1;
+        if bradsVoiceSwitch.isOn {
+            playVoice(word: word, delegate: self)
+            audioCount += 1
         }else{
-            ongoingUtterance[word]=1;
+            self.speak(word: word);
+            audioCount += 1;
+//            if ongoingUtterance.keys.contains(word) {
+//                ongoingUtterance[word]!+=1;
+//            }else{
+//                ongoingUtterance[word]=1;
+//            }
         }
         if (predictedSentence.text.count>0) {
             predictedSentence.text.append(" ")
@@ -89,8 +116,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         var predicts = predictor.nextWord(sentence: sentence)
         if predicts.count>=1 {(
             nextWordButton.setTitle(predicts[0], for: .normal),
-            print("first button:", phoneme_dict.findPhoneme(word: predicts[0])),
-            playVoice(word: predicts[0])
+            print("first button:", phoneme_dict.findPhoneme(word: predicts[0]))
         )}
         if predicts.count>=2 {(
             nextWordButton2.setTitle(predicts[1], for: .normal),

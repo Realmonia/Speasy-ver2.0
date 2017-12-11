@@ -16,7 +16,7 @@ import AVFoundation
 // TODO: check completion nil or some url: if nil, do machine voice; else, do playback
 // possible optimization: check if resulting audio is recognizable by speech recog API: if so then return else use machine
 // possible optimization: after a new word has been selected, prompted next time when open if Brad thinks he need to record the word one time
-func concatenateFiles(audioFiles: [NSURL]) -> String {
+func concatenateFiles(audioFiles: [NSURL], delegate: AVAudioPlayerDelegate) -> String {
     
     // check if there is more than on target audio files
     guard audioFiles.count > 0 else {
@@ -27,6 +27,8 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
         let fileURL = audioFiles[0]
         do {
             synthVoice = try AVAudioPlayer(contentsOf: fileURL as URL)
+            synthVoice?.volume = 10
+            synthVoice?.delegate = delegate
             synthVoice?.play()
         }
         catch{}
@@ -64,12 +66,12 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
         let fileURL = URL(fileURLWithPath: temp_path)
         // Remove existing file (to override if name conflict)
         print("wtf??",fileURL.path)
-        do {
-            try FileManager.default.removeItem(atPath: fileURL.path)
-            print("Removed \(fileURL.path)")
-        } catch {
-            print("Could not remove file - \(error)")
-        }
+//        do {
+//            try FileManager.default.removeItem(atPath: fileURL.path)
+//            print("Removed \(fileURL.path)")
+//        } catch {
+//            print("Could not remove file - \(error)")
+//        }
         
         // Configure export session output
         exportSession.outputURL = NSURL.fileURL(withPath: fileURL.path)
@@ -81,6 +83,8 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
                 print("Export complete")
                 do {
                     synthVoice = try AVAudioPlayer(contentsOf: fileURL)
+                    synthVoice?.volume = 10
+                    synthVoice?.delegate = delegate
                     synthVoice?.play()
                 }
                 catch{}
