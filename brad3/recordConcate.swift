@@ -66,12 +66,12 @@ func concatenateFiles(audioFiles: [NSURL], delegate: AVAudioPlayerDelegate) -> S
         let fileURL = URL(fileURLWithPath: temp_path)
         // Remove existing file (to override if name conflict)
         print("wtf??",fileURL.path)
-//        do {
-//            try FileManager.default.removeItem(atPath: fileURL.path)
-//            print("Removed \(fileURL.path)")
-//        } catch {
-//            print("Could not remove file - \(error)")
-//        }
+        do {
+            try FileManager.default.removeItem(atPath: fileURL.path)
+            print("Removed \(fileURL.path)")
+        } catch {
+            print("Could not remove file - \(error)")
+        }
         
         // Configure export session output
         exportSession.outputURL = NSURL.fileURL(withPath: fileURL.path)
