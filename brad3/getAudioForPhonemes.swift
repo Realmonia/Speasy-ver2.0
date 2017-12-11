@@ -27,21 +27,5 @@ func playVoice(word: String) -> (){
         let url = NSURL(fileURLWithPath: path)
         path_array.append(url)
     }
-    
-    let conc_rst_path = concatenateFiles(audioFiles: path_array)
-    
-    if conc_rst_path == "" {
-        print("concatenation fail")
-    }
-    
-    let temp_path: String = Bundle.main.path(forResource: "Model", ofType: "bundle")! + "/hanhm_record/" + conc_rst_path
-    
-    let out_url = URL(fileURLWithPath: temp_path)
-
-    do {
-        synthVoice = try AVAudioPlayer(contentsOf: out_url)
-        synthVoice?.play()
-    } catch {
-        print("synthesized file loaded fail")
-    }
+    concatenateFiles(audioFiles: path_array)
 }

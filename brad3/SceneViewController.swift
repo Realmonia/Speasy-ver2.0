@@ -41,6 +41,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
             predictedSentence.text.append(" ");
         }
         predictedSentence.text.append(word);
+        playVoice(word: word)
         scrollToFit()
         fillButton(sentence: predictedSentence.text)
         toggleRecording()
@@ -50,8 +51,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate {
         var predicts = predictor.nextWord(sentence: sentence)
         if predicts.count>=1 {(
             nextWordButton.setTitle(predicts[0], for: .normal),
-            print("first button:", phoneme_dict.findPhoneme(word: predicts[0])),
-            playVoice(word: predicts[0])
+            print("first button:", phoneme_dict.findPhoneme(word: predicts[0]))
         )}
         if predicts.count>=2 {(
             nextWordButton2.setTitle(predicts[1], for: .normal),

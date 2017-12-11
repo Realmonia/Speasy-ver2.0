@@ -16,11 +16,11 @@ import AVFoundation
 // TODO: check completion nil or some url: if nil, do machine voice; else, do playback
 // possible optimization: check if resulting audio is recognizable by speech recog API: if so then return else use machine
 // possible optimization: after a new word has been selected, prompted next time when open if Brad thinks he need to record the word one time
-func concatenateFiles(audioFiles: [NSURL]) -> String {
+func concatenateFiles(audioFiles: [NSURL]) {
     
     // check if there is more than on target audio files
     guard audioFiles.count > 0 else {
-        return ""
+        return
     }
     
     if audioFiles.count == 1 {
@@ -30,7 +30,7 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
             synthVoice?.play()
         }
         catch{}
-        return fileURL.path!
+        return
     }
     
     // Concatenate audio files into one file: first line set time, other two lines don't know what they are doing for now
@@ -51,7 +51,7 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
             } catch {
                 // if track doesn't exist then report error
                 print("Error concatenating file - \(error)")
-                return ""
+                return
             }
         }
     }
@@ -81,6 +81,7 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
                 print("Export complete")
                 do {
                     synthVoice = try AVAudioPlayer(contentsOf: fileURL)
+                    synthVoice?.volume = 100
                     synthVoice?.play()
                 }
                 catch{}
@@ -92,5 +93,5 @@ func concatenateFiles(audioFiles: [NSURL]) -> String {
             return
         }
     }
-    return temp_path
+    return
 }
