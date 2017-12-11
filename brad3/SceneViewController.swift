@@ -65,7 +65,7 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
                 try audioSession.setMode(AVAudioSessionModeVoiceChat)
                 try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
             }catch{
-                print("Unable to set audiosession when speaking")
+                print("speak(word): Unable to set audiosession")
             }
         }
         myUtterance = AVSpeechUtterance(string: word);
@@ -225,8 +225,8 @@ class SceneViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeec
         }
         let audioSession = AVAudioSession.sharedInstance()
         do {
-//            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+//            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
             try audioSession.setMode(AVAudioSessionModeVoiceChat)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
